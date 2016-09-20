@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>C. Storey CMSC636 Homework Assignment 1</title>
+    <script src="https://d3js.org/d3.v3.js"></script>
+  </head>
+  <body>
+    <p>Part two: Visualizations</p>
+    <p></p>
+    <p></p>
+    <p>Image One:  A Data-Driven Documents (D3) Visualizations of a space delimited file containing single FA values showing diffusion tensor imaging (dataset 1):</p>
+
+  </body>
+
+  <script>
+    // CMSC 636: DataVisualization, Homework #1, Due September 19, 11:00pm.
+    // This code reads multi-dimensional data from an external file and demonstrates some of
+    // the visualization capabilities of the Data-Driven Documents (D3) JavaScript library.
+    //
+      var canvasWidth = 1500;
+      var canvasHeight = 1500;
+      var margin = 50;
+      var pixelScale = 1;
+
+      // var CircleColorScale = d3.scale.linear()
+      //                  .domain([0, 1])
+      //                  .range(["red","green"]);
+
+      var svg = d3.select("body").append("svg")
+        .attr("width",  canvasWidth)
+        .attr("height", canvasHeight);
+
+      var data;
+      d3.dsv(",", "https://drive.google.com/file/d/0B-9FvgB3g4N1Ykg4UUZ1djFTT28/view?usp=sharing", function (dsv){
+          data = d3.nest()
+          .key(function(d) {return d.EncounterID;})
+          .sortKeys(d3.ascending)
+          .entries(dsv);
+          console.log(dsv);
+        });
+
+/*      function render(data){
+
+        // Bind data
+        var circle = svg.selectAll("circle").data(data);
+
+        // Enter
+        circle.enter().append("circle")
+          .attr("r", pixelScale);
+
+        // Update
+        circle
+          .attr("cx", function (d){ return i; })
+          .attr("cy", function (d){ return i; })
+          .style("fill", function(d) {return tensorColorScale(d)});
+
+        // Exit
+        circle.exit().remove();
+      }
+
+      function type(d){
+        d.x = parseFloat(d.x);
+        return d;
+      }
+
+*/
+    </script>
